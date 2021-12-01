@@ -1,0 +1,145 @@
+½½½½ MATLAB IMAGE PROCESSING TEMPLATE %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% NOTES
+%%% uint8 values: [0,255] (u:unsigned)
+
+
+% INSPECT IMAGE VALUES
+img = imgread('picture.png');
+imgshow(img);
+disp(size(img));
+
+% AT A GIVEN LOCATION (ROW, COL):
+disp(img(50,100));
+
+% From an entire row:
+plot(img(50,:));
+
+% CROP AN IMAGE
+cropped = img(110:310,10:160);
+imshow(cropped);
+
+
+% COLOR PLANES
+img_red = img(:, :, 1);
+img_green = img(:, :, 2);
+img_blue = img(:, :, 3);
+
+
+% ADD TWO IMAGES
+img1 = imgread('picture1.png');
+img2 = imgread('picture2.png');
+
+imgshow(img1);
+disp("Picture1 image size:");
+disp(size(img1));
+
+imgshow(img1);
+disp("Picture1 image size:");
+disp(size(img1));
+
+summed = img1 + img2;
+imshow(summed);
+
+average = img1 /2 + img2 /2;	%%not (img1+img2)/2 !!!
+imshow(average);
+
+
+% MULTIPLY BY A SCALAR
+img = imread('picture.png');
+img_darker= 0.5 * img;
+img_brighter = 1.5 * img; 	%%(note: upper limit is  255)
+imshow(img_darker);
+imshow(img_brighter);
+
+
+% MULTIPLY BY A SCALAR: FUNCTION
+function result = scale(img, value)
+	result = value .* img; 	%%ATTENTION: it's 'dot-asteriks'!
+endfunction
+
+
+% IMAGE DIFFERENCE
+img1 = imread('picture1.png');
+img2 = imread('picture2.png');
+
+%the both cases below, do NOT preserve negative results!!!
+diff = img1-img2;
+imshow(diff);
+abs_diff = abs(img1-img2);
+imshow(abs_diff);
+
+%to preserve negative values
+pkg load image; 	%%image package!
+imabsdiff(img1,img2);
+
+
+% GENERATE GAUISSIAN NOISE
+some_number = randn();
+disp(some_number);
+
+some_matrix = randn([2 3]);
+disp(some_matrix);
+
+noise = randn([1 1000]);
+disp(noise);
+[n, x] = hist(noise, [-3 -2 -1 0 1 2 3]); 	%% x:bin centers, n:freq.
+disp([x; n]);
+plot(x, n);
+
+noise = randn([1 1000]);
+disp(noise);
+[n, x] = hist(noise,linspace(-3,3,7); 	%% x:bin centers, n:freq.
+disp([x; n]);
+plot(x, n);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
